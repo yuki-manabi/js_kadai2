@@ -1,4 +1,5 @@
-function displayResult(){
+document.addEventListener(`DOMContentLoaded`, () => {
+  document.getElementById(`btn`).addEventListener(`click`, () => {
 
     const parentNode = document.getElementById(`display`);
     //parentNode.innerHTML = `<div id=/"display/"></div>`;//display表示初期化
@@ -13,8 +14,15 @@ function displayResult(){
   
     const regex = /^([1-9]\d*)$/;//整数の正規表現
   
-    if(regex.test(fizz) && regex.test(buzz)){
-  
+    if(!regex.test(fizz) || !regex.test(buzz)){
+
+      const pElement = document.createElement(`div`);
+      pElement.classList.add("children");
+      pElement.textContent = "整数値を入力してください";
+      parentNode.appendChild(pElement);
+      return;
+
+    }else{
       const fizzNum = parseInt(fizz);
       const buzzNum = parseInt(buzz);
   
@@ -42,12 +50,6 @@ function displayResult(){
   
         parentNode.appendChild(pElement);
       }
-    }else{
-      const pElement = document.createElement(`div`);
-      pElement.classList.add("children");
-      pElement.textContent = "整数値を入力してください";
-      parentNode.appendChild(pElement);
     }
-  
-  }
-  
+  });
+});
