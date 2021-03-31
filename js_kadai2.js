@@ -22,24 +22,23 @@ document.addEventListener(`DOMContentLoaded`, () => {
       parentNode.appendChild(pElement);
       return;
 
-    } else {
-      const fizzNum = parseInt(fizz);
-      const buzzNum = parseInt(buzz);
+    }
+    const fizzNum = parseInt(fizz);
+    const buzzNum = parseInt(buzz);
 
-      for (let i = 1; i < 100; i++) {
-        const pElement = document.createElement(`div`);
-        pElement.classList.add(`children`);
+    for (let i = 1; i < 100; i++) {
+      const pElement = document.createElement(`div`);
+      pElement.classList.add(`children`);
 
-        if ((i % fizzNum === 0) && (i % buzzNum === 0)) {
-          pElement.textContent = `FizzBuzz ${i}`;
-        } else if (i % fizzNum === 0) {
-          pElement.textContent = `Fizz ${i}`;
-        } else if (i % buzzNum === 0) {
-          pElement.textContent = `Buzz ${i}`;
-        }
-
-        parentNode.appendChild(pElement);
+      if ((i % fizzNum === 0) && (i % buzzNum === 0)) {
+        pElement.textContent = `FizzBuzz ${i}`;
+      } else if (i % fizzNum === 0) {
+        pElement.textContent = `Fizz ${i}`;
+      } else if (i % buzzNum === 0) {
+        pElement.textContent = `Buzz ${i}`;
       }
+
+      parentNode.appendChild(pElement);
     }
   });
 });
