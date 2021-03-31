@@ -3,8 +3,8 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
     const parentNode = document.getElementById(`display`);
     //parentNode.innerHTML = `<div id=/"display/"></div>`;//display表示初期化
-    if(parentNode.getElementsByClassName(`children`).length > 0){
-      while (parentNode.firstChild){
+    if (parentNode.getElementsByClassName(`children`).length > 0) {
+      while (parentNode.firstChild) {
         parentNode.removeChild(parentNode.firstChild);
       }
     }
@@ -14,40 +14,30 @@ document.addEventListener(`DOMContentLoaded`, () => {
   
     const regex = /^([1-9]\d*)$/;//整数の正規表現
   
-    if(!regex.test(fizz) || !regex.test(buzz)){
+    if (!regex.test(fizz) || !regex.test(buzz)) {
 
       const pElement = document.createElement(`div`);
-      pElement.classList.add("children");
-      pElement.textContent = "整数値を入力してください";
+      pElement.classList.add(`children`);
+      pElement.textContent = `整数値を入力してください`;
       parentNode.appendChild(pElement);
       return;
 
-    }else{
+    } else {
       const fizzNum = parseInt(fizz);
       const buzzNum = parseInt(buzz);
-  
-      for(let i=1,j=1; i<100,j<100;){
+
+      for (let i = 1; i < 100; i++) {
         const pElement = document.createElement(`div`);
-        pElement.classList.add("children");
-  
-        const _fizzNum = fizzNum*i;
-        const _buzzNum = buzzNum*j;
-  
-        if(_fizzNum>=100 && _buzzNum>=100){
-          break;
+        pElement.classList.add(`children`);
+
+        if ((i % fizzNum === 0) && (i % buzzNum === 0)) {
+          pElement.textContent = `FizzBuzz ${i}`;
+        } else if (i % fizzNum === 0) {
+          pElement.textContent = `Fizz ${i}`;
+        } else if (i % buzzNum === 0) {
+          pElement.textContent = `Buzz ${i}`;
         }
-        if(_fizzNum < _buzzNum){
-          pElement.textContent = "Fizz " + _fizzNum;
-          i++;
-        }else if(_fizzNum > _buzzNum){
-          pElement.textContent = "Buzz " + _buzzNum;
-          j++;
-        }else{
-          pElement.textContent = "FizzBuzz " + _fizzNum;
-          i++;
-          j++;
-        }
-  
+
         parentNode.appendChild(pElement);
       }
     }
